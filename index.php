@@ -32,7 +32,7 @@
 					break;
 			}
 		} else {
-            buildlink('home.php', true, 'm- Home');
+            buildlink('home.php', 'user.controller.php',true, ' - Home');
 		}
 	}
 ?>
