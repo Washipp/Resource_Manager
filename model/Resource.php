@@ -2,22 +2,22 @@
 
 /**
  * Created by PhpStorm.
- * User: silasmeier
- * Date: 12.05.17
- * Time: 22:40
+ * User: Silas
+ * Date: 15.05.2017
+ * Time: 20:35
  */
-include_once 'Connection.php';
+require 'Connection.php';
 
-class Ressource extends Connection
+class Resource extends Connection
 {
     function __construct() {
         parent::__construct();
     }
 
-    function newRessource($name, $description, $activated = 1){
+    function newResource($name, $description, $activated = 1){
         $stmt = $this->getConnection()->prepare( "
-          INSERT INTO ressource
-         (name, description, activated)
+          INSERT INTO resource
+         (title, description, activated)
           VALUES (?,?,?);");
         $stmt->bind_param('ssi', $name, $description, $activated);
         $stmt->execute();
@@ -28,7 +28,7 @@ class Ressource extends Connection
     function showInfosById($id){
         $array = [];
         $stmt = $this->getConnection()->prepare( "
-          SELECT name, description FROM ressource WHERE id_ress = ?;");
+          SELECT title, description FROM resource WHERE reso_id = ?;");
         $stmt->bind_param('i', $id );
         $stmt->execute();
         $stmt->bind_result($name, $description);
@@ -46,26 +46,35 @@ class Ressource extends Connection
 
     function deactivateById($id){
         $stmt = $this->getConnection()->prepare( "
-          UPDATE ressource SET activated = 0 WHERE id_ress = ?");
+          UPDATE resource SET activated = 0 WHERE reso_id = ?");
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt->close();
         $this->getConnection()->close();
     }
 
-    function changeInfosById($id, $newName, $newDescription){
+    function changeDescriptionById($id, $newDescription){
         $stmt = $this->getConnection()->prepare("
-          UPDATE ressource SET name = ?, description = ? WHERE id_ress = ?");
-        $stmt->bind_param('ssi', $newName, $newDescription, $id);
+          UPDATE resource SET description = ? WHERE reso_id = ?");
+        $stmt->bind_param('si', $newDescription, $id);
         $stmt->execute();
         $stmt->close();
         $this->getConnection()->close();
     }
 
-    function selectAllRessources(){
+    function changeTitleById($id, $newName){
+        $stmt = $this->getConnection()->prepare("
+          UPDATE resource SET title = ? WHERE reso_id = ?");
+        $stmt->bind_param('si', $newName, $id);
+        $stmt->execute();
+        $stmt->close();
+        $this->getConnection()->close();
+    }
+
+    function selectAllResources(){
         $array = [];
         $stmt = $this->getConnection()->prepare( "
-          SELECT * FROM ressource ");
+          SELECT * FROM resource ");
         $stmt->execute();
         $stmt->bind_result($id, $name, $description, $activated, $created);
         while($stmt->fetch()){

@@ -5,14 +5,14 @@
  * Date: 13.05.17
  * Time: 18:30
  */
-include 'model/Ressource.php';
+include 'model/Resource.php';
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $description = $_POST['description'];
 
-    $r = new Ressource();
+    $r = new Resource();
 
-    $r->newRessource($name, $description);
+    $r->newResource($name, $description);
 
-    header('Location: addressource');
+    header('Location: addresource');
 }

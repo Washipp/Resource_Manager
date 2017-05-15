@@ -12,7 +12,7 @@ class Reservation extends Connection
         parent::__construct();
     }
 
-    function newReservation($u_id, $ress_id){
+    function newReservation($id_u, $id_reso){
 
     }
 

@@ -1,7 +1,7 @@
 <?php
-include_once 'model/Ressource.php';
-$r = new Ressource();
-$array =  $r->selectAllRessources();
+include_once 'model/Resource.php';
+$r = new Resource();
+$array =  $r->selectAllResources();
 
 foreach($array as $key=>$val){
     foreach($val as $k=>$v){

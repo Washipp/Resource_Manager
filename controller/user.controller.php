@@ -6,30 +6,35 @@
  * Time: 13:17
  */
 session_start();
-include 'model/Ressource.php';
+include 'model/Resource.php';
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $r = new User();
 
-    $userPassword = $r->findPasswordByEmail($email);
 
-    $hashedPassword = hashingPassword($password, $r->findSaltByEmail($email));
+    $passwordFromDatabase = $r->findPasswordByEmail($email);
 
-    if($userPassword == $hashedPassword){
-        $_SESSION['userid'] = $r->findIdByEmail($email);
-        header('Location: login?success=true');
+    if(password_needs_rehash($passwordFromDatabase, PASSWORD_BCRYPT, ["cost" => 12]) && hash("sha512", $password) === $passwordFromDatabase){
+        $newPasswordHash = password_hash($password, PASSWORD_BCRYPT, ["cost" => 12]);
+        $r->setPasswordByEmail($email, $newPasswordHash);
+
+        if(password_verify($password, $newPasswordHash)){
+            $_SESSION['userid'] = $r->findIdByEmail($email);
+            header('Location: login?success=true');
+        }else{
+            header('Location: login?success=false');
+        }
     }else{
-        header('Location: login?success=false');
+        if(password_verify($password, $passwordFromDatabase)){
+            $_SESSION['userid'] = $r->findIdByEmail($email);
+            header('Location: login?success=true');
+        }else{
+            header('Location: login?success=false');
+        }
     }
 }
 else if(isset($_POST['register'])){
 
-}
-
-function hashingPassword($password, $salt){
-
-
-    return $password;
 }

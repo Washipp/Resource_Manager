@@ -4,8 +4,8 @@
 //if(isset($_SESSION['userid'])){
     echo'
          <a href="account">Account</a>
-         <a href="ressources">Ressourcen</a>
-         <a href="addressource">Ressource Hinzuf&uuml;gen</a>
+         <a href="resources">Ressourcen</a>
+         <a href="addresource">Ressource Hinzuf&uuml;gen</a>
 		';
 //}else{
     echo '<a href="login">Login</a>';

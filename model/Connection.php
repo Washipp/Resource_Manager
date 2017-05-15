@@ -19,9 +19,10 @@ abstract class Connection
         $serverName = "localhost";
         $userName = "root";
         $password = "root";
-        $dbName = "Ressource_Manger";
+        $dbName = "13528_res_man";
+        $port = "8889";
 
-        $conn =  new mysqli($serverName, $userName, $password, $dbName );
+        $conn =  new mysqli($serverName, $userName, $password, $dbName ,$port);
         if (mysqli_connect_errno()) {
             printf("Verbindung fehlgeschlagen: %s\n", mysqli_connect_error());
             exit();

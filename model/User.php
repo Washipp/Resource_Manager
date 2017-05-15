@@ -12,21 +12,21 @@ class User extends Connection
         parent::__construct();
     }
 
-    function newUser($name, $email, $password, $activated = 1, $salt){
+    function newUser($name, $email, $password, $activated = 1){
         $stmt = $this->getConnection()->prepare( "
           INSERT INTO user
-         (name, email, password, activated, salt)
-          VALUES (?,?,?,?,?);");
-        $stmt->bind_param('sssis', $name, $email, $password, $activated, $salt);
+         (name, email, password, activated)
+          VALUES (?,?,?,?);");
+        $stmt->bind_param('sssi', $name, $email, $password, $activated);
         $stmt->execute();
         $stmt->close();
         $this->getConnection()->close();
     }
 
-    function setPasswordById($id, $newPassword){
+    function setPasswordByEmail($email, $newPassword){
         $stmt = $this->getConnection()->prepare("
-          UPDATE user SET password = ? WHERE id_u = ?");
-        $stmt->bind_param('si', $newPassword, $id);
+          UPDATE user SET password = ? WHERE email = ?");
+        $stmt->bind_param('si', $newPassword, $email);
         $stmt->execute();
         $stmt->close();
         $this->getConnection()->close();
@@ -34,7 +34,7 @@ class User extends Connection
 
     function deactivateById($id){
         $stmt = $this->getConnection()->prepare("
-          UPDATE user SET activated = 0 WHERE id_u = ?");
+          UPDATE user SET activated = 0 WHERE u_id = ?");
         $stmt->bind_param( 'i', $id);
         $stmt->execute();
         $stmt->close();
@@ -53,21 +53,10 @@ class User extends Connection
         return $password;
     }
 
-    function findSaltByEmail($email){
-        $stmt = $this->getConnection()->prepare( "
-          SELECT salt FROM user WHERE email = ?");
-        $stmt->bind_param( 's', $email);
-        $stmt->execute();
-        $stmt->bind_result($salt);
-        $stmt->fetch();
-        $stmt->close();
-        $this->getConnection()->close();
-        return $salt;
-    }
 
     function findIdByEmail($email){
         $stmt = $this->getConnection()->prepare( "
-          SELECT id_u FROM user WHERE email = ?");
+          SELECT u_id FROM user WHERE email = ?");
         $stmt->bind_param( 's', $email);
         $stmt->execute();
         $stmt->bind_result($id);
