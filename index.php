@@ -25,6 +25,9 @@
                 case 'account':
 					buildlink('account.php', 'account.controller.php', false, ' - Mein Account');
 					break;
+                case 'logout':
+                    buildlink('logout.php', 'account.controller.php', false, ' - Logout');
+                    break;
 
 				default:
 					array_splice($url, 0, 1);//den URL Array an der 0-Stelle entfernen und neuindexieren.

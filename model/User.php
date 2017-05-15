@@ -25,7 +25,7 @@ class User extends Connection
 
     function setPasswordByEmail($email, $newPassword){
         $stmt = $this->getConnection()->prepare("
-          UPDATE user SET password = ? WHERE email = ?");
+          UPDATE user SET password = ? WHERE email = ?;");
         $stmt->bind_param('si', $newPassword, $email);
         $stmt->execute();
         $stmt->close();
@@ -34,7 +34,7 @@ class User extends Connection
 
     function deactivateById($id){
         $stmt = $this->getConnection()->prepare("
-          UPDATE user SET activated = 0 WHERE u_id = ?");
+          UPDATE user SET activated = 0 WHERE u_id = ?;");
         $stmt->bind_param( 'i', $id);
         $stmt->execute();
         $stmt->close();
@@ -43,8 +43,10 @@ class User extends Connection
 
     function findPasswordByEmail($email){
         $stmt = $this->getConnection()->prepare("
-          SELECT password FROM user WHERE email = ?");
+          SELECT password FROM user WHERE email = ?;");
+        var_dump($stmt);
         $stmt->bind_param( 's', $email);
+        echo'pisser';
         $stmt->execute();
         $stmt->bind_result($password);
         $stmt->fetch();
@@ -55,8 +57,9 @@ class User extends Connection
 
 
     function findIdByEmail($email){
-        $stmt = $this->getConnection()->prepare( "
-          SELECT u_id FROM user WHERE email = ?");
+        $stmt = $this->getConnection()->prepare("
+          SELECT u_id FROM user WHERE email = ?;");
+        echo $this->getConnection()->error;
         $stmt->bind_param( 's', $email);
         $stmt->execute();
         $stmt->bind_result($id);
