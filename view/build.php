@@ -1,6 +1,6 @@
 <?php
     session_start();
-	function buildlink($file,$controller, $access = true, $title = 'Chatraum'){
+	function buildlink($file, $access = true, $title = 'Resource Manager'){
 
 	/*if(!$access){ }//Überprüft, ob die Seite mittels $_SESSION  überprüft werden muss. falls 'false', wird nicht überprüft.
 	else{
@@ -9,7 +9,6 @@
 		}
 	}*/
 
-	require_once 'controller/'.$controller;
 ?>
         <!doctype html>
 	<html>

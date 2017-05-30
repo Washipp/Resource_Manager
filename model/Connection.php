@@ -35,4 +35,8 @@ abstract class Connection
     function getConnection(){
         return $this->connection;
     }
+
+    function unSetConnection(){
+        $this->connection->close();
+    }
 }

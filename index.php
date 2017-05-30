@@ -8,25 +8,25 @@
 	} 
 	//Ist der Wert nicht gesetzt wird die Standardseite (home) aufgerufen.
 	else {
-		buildlink('home.php', 'user.controller.php',false, ' - Home');
+		buildlink('home.php', false, ' - Home');
 	}
 	function dispatch($url){
 		if(!empty($url)) {
-			switch($url[count($url)-1]) { //buildlink($filename, controller zum laden, true = muss nicht eingeloggt sein/false = muss eingeloggt sein, title attribut)
+			switch($url[count($url)-1]) { //buildlink($filename, true = muss nicht eingeloggt sein/false = muss eingeloggt sein, title attribut)
                 case 'login':
-                    buildlink('login.php','user.controller.php',false, ' - Login');
+                    buildlink('login.php',false, ' - Login');
                     break;
                 case 'resources':
-                    buildlink('resources.php', 'resource.controller.php', false, ' - Alle Ressourcen');
+                    buildlink('resources.php',  false, ' - Alle Ressourcen');
                     break;
                 case 'addresource':
-                    buildlink('addNewResource.php','resource.controller.php', false, ' - Ressource hinzufügen');
+                    buildlink('addNewResource.php', false, ' - Ressource hinzufügen');
                     break;
                 case 'account':
-					buildlink('account.php', 'account.controller.php', false, ' - Mein Account');
+					buildlink('account.php',  false, ' - Mein Account');
 					break;
                 case 'logout':
-                    buildlink('logout.php', 'account.controller.php', false, ' - Logout');
+                    buildlink('logout.php',  false, ' - Logout');
                     break;
 
 				default:
@@ -35,7 +35,7 @@
 					break;
 			}
 		} else {
-            buildlink('home.php', 'user.controller.php',false, ' - Home');
+            buildlink('home.php', false, ' - Home');
 		}
 	}
 ?>

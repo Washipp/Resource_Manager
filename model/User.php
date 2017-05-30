@@ -6,6 +6,7 @@
  * Date: 12.05.17
  * Time: 22:40
  */
+require_once 'Connection.php';
 class User extends Connection
 {
     function __construct() {
@@ -20,7 +21,6 @@ class User extends Connection
         $stmt->bind_param('sssi', $name, $email, $password, $activated);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
     }
 
     function setPasswordByEmail($email, $newPassword){
@@ -29,7 +29,6 @@ class User extends Connection
         $stmt->bind_param('si', $newPassword, $email);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
     }
 
     function deactivateById($id){
@@ -38,20 +37,16 @@ class User extends Connection
         $stmt->bind_param( 'i', $id);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
     }
 
     function findPasswordByEmail($email){
         $stmt = $this->getConnection()->prepare("
           SELECT password FROM user WHERE email = ?;");
-        var_dump($stmt);
         $stmt->bind_param( 's', $email);
-        echo'pisser';
         $stmt->execute();
         $stmt->bind_result($password);
         $stmt->fetch();
         $stmt->close();
-        $this->getConnection()->close();
         return $password;
     }
 
@@ -59,13 +54,11 @@ class User extends Connection
     function findIdByEmail($email){
         $stmt = $this->getConnection()->prepare("
           SELECT u_id FROM user WHERE email = ?;");
-        echo $this->getConnection()->error;
         $stmt->bind_param( 's', $email);
         $stmt->execute();
         $stmt->bind_result($id);
         $stmt->fetch();
         $stmt->close();
-        $this->getConnection()->close();
         return $id;
     }
 

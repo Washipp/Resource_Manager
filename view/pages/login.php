@@ -1,8 +1,9 @@
+
 <h2>Login</h2>
 <form method="post">
     <label for="emailLogin">Email: </label><input type="email" name="emailLogin" id="emailLogin">
     <label for="passwordLogin">Passwort: </label><input type="password" name="passwordLogin" id="passwordLogin">
-    <input type="submit" name="login" id="login">
+    <button type="button" name="login" id="login" onclick="sendLoginInputs()">Senden</button>
 </form>
 <hr />
 <h2>Registrieren</h2>
@@ -11,5 +12,6 @@
     <label for="emailRegister">Email: </label><input type="email" name="emailRegister" id="emailRegister" required>
     <label for="passwordRegister">Passwort: </label><input type="password" name="passwordRegister" id="passwordRegister" required>
     <label for="passwordRepeat"> Passwort wiederholen: </label><input type="password" name="passwordRepeat" id="passwordRepeat" required>
-    <input type="submit" name="register" id="register">
+    <button type="button" id="register" onclick="sendRegisterInputs()">Senden</button>
 </form>
+<div class="info" id="info"></div>
