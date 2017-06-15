@@ -5,14 +5,17 @@
  * Date: 13.05.17
  * Time: 18:30
  */
-include 'model/Resource.php';
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $description = $_POST['description'];
+session_start();
+require_once '../model/Resource.php';
 
-    $r = new Resource();
+$title = $_POST['title'];
+$description = $_POST['description'];
 
-    $r->newResource($name, $description);
+$r = new Resource();
 
-    header('Location: addresource');
-}
+$r->newResource($title, $description);
+//TODO: Check if Resource got added.
+echo 'Resource successfully added.';
+
+$r->unSetConnection();
+

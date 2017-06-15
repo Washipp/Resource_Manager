@@ -22,7 +22,6 @@ class Resource extends Connection
         $stmt->bind_param('ssi', $name, $description, $activated);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
     }
 
     function showInfosById($id){
@@ -40,7 +39,7 @@ class Resource extends Connection
             $array[] = $result;
         }
         $stmt->close();
-        $this->getConnection()->close();
+
         return $array;
     }
 
@@ -50,7 +49,7 @@ class Resource extends Connection
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
+
     }
 
     function changeDescriptionById($id, $newDescription){
@@ -59,7 +58,7 @@ class Resource extends Connection
         $stmt->bind_param('si', $newDescription, $id);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
+
     }
 
     function changeTitleById($id, $newName){
@@ -68,7 +67,7 @@ class Resource extends Connection
         $stmt->bind_param('si', $newName, $id);
         $stmt->execute();
         $stmt->close();
-        $this->getConnection()->close();
+
     }
 
     function selectAllResources(){
@@ -85,7 +84,6 @@ class Resource extends Connection
             $array[] = $result;
         }
         $stmt->close();
-        $this->getConnection()->close();
         return $array;
     }
 }

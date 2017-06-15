@@ -1,5 +1,6 @@
 <form method="post">
-    <label for="name">Titel: </label> <input type="text" name="name" required><br>
-    <label for="description">Beschreibung: </label> <input type="text" name="description" required><br>
-    <input type="submit" name="submit" value="Senden">
+    <label for="title">Title: </label> <input type="text" name="title" id="title" required><br>
+    <label for="description">Description: </label> <input type="text" name="description" id="description"required><br>
+    <button type="button" id="sendResource" onclick="sendResourceInputs()">Send</button>
 </form>
+<div class="info" id="info"></div>

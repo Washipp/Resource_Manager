@@ -17,13 +17,13 @@
                     buildlink('login.php',false, ' - Login');
                     break;
                 case 'resources':
-                    buildlink('resources.php',  false, ' - Alle Ressourcen');
+                    buildlink('showResources.php',  false, ' - Alle Ressourcen');
                     break;
                 case 'addresource':
-                    buildlink('addNewResource.php', false, ' - Ressource hinzufügen');
+                    buildlink('addNewResource.php', true, ' - Ressource hinzufügen');
                     break;
                 case 'account':
-					buildlink('account.php',  false, ' - Mein Account');
+					buildlink('account.php',  true, ' - Mein Account');
 					break;
                 case 'logout':
                     buildlink('logout.php',  false, ' - Logout');

@@ -1,5 +1,6 @@
 <?php
-include_once 'model/Resource.php';
+require_once 'model/Resource.php';
+
 $r = new Resource();
 $array =  $r->selectAllResources();
 
@@ -9,4 +10,3 @@ foreach($array as $key=>$val){
     }
     echo '<br />';
 }
-?>
