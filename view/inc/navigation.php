@@ -4,7 +4,7 @@
 <a href="resources">Ressourcen</a>
 <a href="addresource">Ressource Hinzuf&uuml;gen</a>
 <?php
-if(isset($_SESSION['userid'])){
+if(isset($_SESSION['userId'])){
     echo'
          <a href="logout">Logout</a>
 		';

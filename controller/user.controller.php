@@ -31,6 +31,8 @@ switch ($type){
             if(password_verify($password, $passwordFromDatabase)){
                 $_SESSION['userId'] = $r->findIdByEmail($email);
                 echo "Login was successful!";
+            }else{
+                echo "Password is incorrect";
             }
         }
         $r->unSetConnection();

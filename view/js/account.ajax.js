@@ -3,29 +3,14 @@
  */
 
 function changeName(){
-    var email = $('#emailLogin').val();
-    var password = $('#passwordLogin').val();
-    if(email === ''){}
-    else{
-        $.ajax({
-            url     : 'controller/account.controller.php',
-            method  : 'post',
-            data    : {
-                'type' : 'login',
-                'email' : email,
-                'password' : password
-            },
-            success : function( response ) {
-                $('#info').text(response);
-            },
-            error : function () {
-                $('#info').text('Login failed. Please try again.');
-            }
-        });
-    }
+    $(".content").append(
+        '<div> <form><label for="passwordRegister">New Name: </label><input type="text" name="newName" id="newName" required>'+
+        '<input type="hidden" id="type" name="type" value="changeName"> '+
+        '<button type="button" id="register" onclick="sendInformation()">Register</button></form></div>'
+    );
 }
 
-function changePassword(){
+function showPasswordChangeForm(){
     $(".content").append(
         '<div> <form><label for="passwordRegister">Password: </label><input type="password" name="passwordRegister" id="passwordRegister" required>'+
         '<label for="passwordRepeat"> Repeat Password: </label><input type="password" name="passwordRepeat" id="passwordRepeat" required>'+

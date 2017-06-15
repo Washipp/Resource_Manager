@@ -31,21 +31,24 @@ switch ($type){
         break;
 
     case 'changePassword':
-        $email = $_POST['email'];
         $password = $_POST['password'];
         $passwordRepeat = $_POST['passwordRepeat'];
 
         if($password !== $passwordRepeat){
-            echo "Password not the same.";
+            echo "Password are not identical.";
         }else{
             $u = new User();
 
             $newPasswordHash = password_hash($password, PASSWORD_BCRYPT, ["cost" => 12]);
 
-            $u->setPasswordByEmail($email, $newPasswordHash);
+            if($u->setPasswordById($_SESSION['userId'], $newPasswordHash)){
+                echo "Changing Password was successful!";
+            }else{
+                echo "An error occurred. Try again";
+            }
 
-            echo "Changing Password was successful!";
-            $r->unSetConnection();
+
+            $u->unSetConnection();
         }
         break;
 }

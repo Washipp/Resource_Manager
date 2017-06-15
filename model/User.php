@@ -21,8 +21,13 @@ class User extends Connection
           VALUES (?,?,?,?);
         ");
         $stmt->bind_param('sssi', $name, $email, $password, $activated);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 
     function showInformationById($id){
@@ -49,8 +54,27 @@ class User extends Connection
           UPDATE user SET password = ? WHERE email = ?;
         ");
         $stmt->bind_param('ss', $newPassword, $email);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
+    }
+
+    function setPasswordById($id, $newPassword){
+        $stmt = $this->getConnection()->prepare("
+          UPDATE user SET password = ? WHERE u_id = ?;
+        ");
+        $stmt->bind_param('si', $newPassword, $id);
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 
     function setNameById($id, $newName){
@@ -58,8 +82,13 @@ class User extends Connection
           UPDATE user SET name = ? WHERE u_id = ?;
         ");
         $stmt->bind_param('si', $newName, $id);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 
     function deactivateById($id){
@@ -67,8 +96,13 @@ class User extends Connection
           UPDATE user SET activated = 0 WHERE u_id = ?;
         ");
         $stmt->bind_param( 'i', $id);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 
     function findPasswordByEmail($email){

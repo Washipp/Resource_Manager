@@ -6,5 +6,5 @@
  * Time: 23:15
  */
 session_start();
-unset($_SESSION['userid']);
+unset($_SESSION['userId']);
 header('Location: login');
