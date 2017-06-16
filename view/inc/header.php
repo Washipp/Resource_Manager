@@ -1,3 +1,3 @@
 <hr>
-    <h3>Header ist hier!</h3>
+    <h3>Resource Manager!</h3>
 <hr>

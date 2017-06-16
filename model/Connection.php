@@ -24,7 +24,7 @@ abstract class Connection
 
         $conn =  new mysqli($serverName, $userName, $password, $dbName ,$port);
         if (mysqli_connect_errno()) {
-            printf("Verbindung fehlgeschlagen: %s\n", mysqli_connect_error());
+            printf("Connection Error: %s\n", mysqli_connect_error());
             exit();
         }
 
