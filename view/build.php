@@ -2,7 +2,7 @@
     session_start();
 	function buildlink($file, $access = true, $title = 'Resource Manager'){
 
-	if(!$access){ }//Überprüft, ob die Seite mittels $_SESSION  überprüft werden muss. falls 'false', wird nicht überprüft.
+	if(true){ }//Überprüft, ob die Seite mittels $_SESSION  überprüft werden muss. falls 'false', wird nicht überprüft.
 	else{
 		if(!isset($_SESSION['userId'])){
 			header ("Location: login");
@@ -16,18 +16,20 @@
 			<?php require_once 'view/inc/head.php'; ?>
 		</head>
 		<body>
-			<header>
-				<?php require_once 'view/inc/header.php'; ?>
-			</header>
-			<nav>
-				<?php require_once 'view/inc/navigation.php'; ?>
-			</nav>
-			<div class="content">
-				<?php require_once 'view/pages/'.$file; ?>
-			</div>
-			<footer>
-				<?php require_once 'view/inc/footer.php'; ?>
-			</footer>
+            <div class="container">
+                <header>
+                    <?php require_once 'view/inc/header.php'; ?>
+                </header>
+                <nav>
+                    <?php require_once 'view/inc/navigation.php'; ?>
+                </nav>
+                <div class="content">
+                    <?php require_once 'view/pages/'.$file; ?>
+                </div>
+                <footer>
+                    <?php require_once 'view/inc/footer.php'; ?>
+                </footer>
+            </div>
 		</body>
 	</html>
 
