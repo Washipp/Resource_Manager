@@ -2,16 +2,11 @@
  * Created by Silas on 15.06.2017.
  */
 
-function showNameChangeForm(){
-    $(".content").append(
-        '<div> <form><label for="passwordRegister">New Name: </label><input type="text" name="newName" id="newName" required>'+
-        '<input type="hidden" id="type" name="type" value="changeName"> '+
-        '<button type="button" id="register" onclick="sendInformation()">Register</button></form></div>'
-    );
+function toggleNameChangeForm(){
+    $("#changeNameForm").toggle();
 }
 
-function showPasswordChangeForm(){
-    //TODO: change to hidden
+function togglePasswordChangeForm(){
     $("#changePasswordForm").toggle();
 }
 

@@ -4,11 +4,11 @@
     <form method="post">
         <div class="six columns">
             <label for="emailLogin">Email: </label>
-            <input class="u-full-width" type="email" name="emailLogin" id="emailLogin">
+            <input class="u-full-width" type="email" name="emailLogin" id="emailLogin" placeholder="test@mail.com" required>
         </div>
         <div class="six columns">
             <label for="passwordLogin">Password: </label>
-            <input class="u-full-width" type="password" name="passwordLogin" id="passwordLogin">
+            <input class="u-full-width" type="password" name="passwordLogin" id="passwordLogin" required>
         </div>
         <button type="button" name="login" id="login" onclick="sendLoginInputs()">Login</button>
     </form>
@@ -19,15 +19,15 @@
     <form method="post">
         <div class="three columns">
             <label for="name">Name:</label>
-            <input class="u-full-width" type="text" name="name" id="name">
+            <input class="u-full-width" type="text" name="name" id="name" placeholder="John Doe">
         </div>
         <div class="three columns">
             <label for="emailRegister">Email: </label>
-            <input class="u-full-width" type="email" name="emailRegister" id="emailRegister" required>
+            <input class="u-full-width" type="email" name="emailRegister" id="emailRegister" placeholder="test@mail.com" required>
         </div>
         <div class="three columns">
             <label for="passwordRegister">Password: </label>
-            <input class="u-full-width" type="password" name="passwordRegister" id="passwordRegister" required>
+            <input class="u-full-width" type="password" name="passwordRegister" id="passwordRegister" placeholder="your Password" required>
         </div>
         <div class="three columns">
             <label for="passwordRepeat"> Repeat Password: </label>
