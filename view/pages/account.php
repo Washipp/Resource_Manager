@@ -1,15 +1,10 @@
 <?php
 require_once 'model/User.php';
-/*
+
 $user = new User();
 
 $array = $user->showInformationById($_SESSION['userId']);
-*/
-$array = [
-    "name" => "Silas",
-    "email" => "silas.meier“bluewsdf",
-    "created" => "today"
-];
+
 
 $name = $array['name'];
 $email = $array['email'];
@@ -25,7 +20,7 @@ $created = $array['created'];
         <span style="font-size:75%">Created at <?php echo $created; ?></span>
     </form>
 </div>
-<div class="info" id="info"></div>
+
 <div class="row" id="changePasswordForm" style="display: none">
     <form method="post">
         <div class="six columns">
@@ -36,8 +31,8 @@ $created = $array['created'];
             <label for="passwordRepeat"> Repeat Password: </label>
             <input class="u-full-width" type="password" name="passwordRepeat" id="passwordRepeat" required>
         </div>
-        <input type="hidden" id="type" name="type" value="changePassword">
-        <button type="button" id="register" onclick="sendInformation()">Change</button>
+        <input type="hidden" id="typePassword" name="typePassword" value="changePassword">
+        <button type="button" id="register" onclick="sendInformationPassword()">Change</button>
     </form>
 </div>
 
@@ -47,7 +42,9 @@ $created = $array['created'];
             <label for="passwordRegister">New Name: </label>
             <input class="u-full-width" type="text" name="newName" id="newName" required>
         </div>
-        <input type="hidden" id="type" name="type" value="changeName">
-        <button type="button" id="register" onclick="sendInformation()">Change</button>
+        <input type="hidden" id="typeName" name="typeName" value="changeName">
+        <button type="button" id="register" onclick="sendInformationName()">Change</button>
     </form>
 </div>
+
+<div class="info" id="info"></div>

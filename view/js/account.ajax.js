@@ -10,10 +10,8 @@ function togglePasswordChangeForm(){
     $("#changePasswordForm").toggle();
 }
 
-function sendInformation(){
-    var type = $('#type').val();
-    var name = $('#name').val();
-    var email = $('#emailRegister').val();
+function sendInformationPassword(){
+    var type = $('#typePassword').val();
     var password = $('#passwordRegister').val();
     var passwordRepeat = $('#passwordRepeat').val();
 
@@ -22,8 +20,6 @@ function sendInformation(){
         method  : 'post',
         data    : {
             'type' : type,
-            'name': name,
-            'email' : email,
             'password' : password,
             'passwordRepeat' : passwordRepeat
         },
@@ -31,7 +27,27 @@ function sendInformation(){
             $('#info').text(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {
-            $('#info').text('An error occurred while trying to register. Please try again.');
+            $('#info').text('An error occurred while trying to change the password. Please try again.');
+        }
+    });
+}
+
+function sendInformationName(){
+    var type = $('#typeName').val();
+    var name = $('#newName').val();
+
+    $.ajax({
+        url     : 'controller/account.controller.php',
+        method  : 'post',
+        data    : {
+            'type' : type,
+            'name' : name
+        },
+        success : function( response ) {
+            $('#info').text(response);
+        },
+        error : function ( xhr, ajaxOptions, thrownError ) {
+            $('#info').text('An error occurred while trying to change the name. Please try again.');
         }
     });
 }

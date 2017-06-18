@@ -23,7 +23,7 @@ switch ($type){
         }
 
         echo "Name change was successful!";
-        $r->unSetConnection();
+        $u->unSetConnection();
         break;
 
     case 'changeEmail':
@@ -35,7 +35,7 @@ switch ($type){
         $passwordRepeat = $_POST['passwordRepeat'];
 
         if($password !== $passwordRepeat){
-            echo "Password are not identical.";
+            echo "Passwords are not identical.";
         }else{
             $u = new User();
 
@@ -46,7 +46,6 @@ switch ($type){
             }else{
                 echo "An error occurred. Try again";
             }
-
 
             $u->unSetConnection();
         }
