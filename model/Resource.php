@@ -78,8 +78,9 @@ class Resource extends Connection
         $stmt->bind_result($id, $name, $description, $activated, $created);
         while($stmt->fetch()){
             $result = [
-                "name" => $name,
-                "description" => $description
+                'id' => $id,
+                'name' => $name,
+                'description' => $description
             ];
             $array[] = $result;
         }

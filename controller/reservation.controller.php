@@ -5,23 +5,8 @@
  * Date: 21.06.2017
  * Time: 19:09
  */
-/*session_start();
+session_start();
 require_once '../model/Reservation.php';
-
-$result = [
-    'name' => 'event1',
-    'start' => '2017-01-09T12:30:00',
-    'end' => '2017-01-11T14:30:00',
-];*/
-
-/*$test = '
-<event>
-    <title>Event1</title>
-    <start>2017-06-09</start>
-    <end>2017-06-10</end>
-</event>
-';*/
-
 
 $json_array = array(
 
@@ -40,28 +25,53 @@ $json_array = array(
 
 );
 
-echo json_encode($json_array);
+//echo json_encode($json_array);
 
-/*
 $type = $_POST['type'];
-$type = 'getReservations';
 
-if($type == 'getReservations'){
+switch ($type){
+    case 'getReservations':
+        $r = new Reservation();
 
-    $r = new Reservation();
+        $result  = $r->getReservationById(1);
 
-    $r->getReservationById(1);
+        $r->unSetConnection();
 
-    $r->unSetConnection();
+        echo json_encode($result);
+        break;
+    case 'updateReservation':
+        $id_reso = $_POST['id_reso'];
+        $start_date = $_POST['start_date'];
+        $end_date = $_POST['end_date'];
 
-    $result = [
-        'name' => 'event1',
-        'start' => '2017-01-09T12:30:00',
-        'end' => '2017-01-11T14:30:00',
-    ];
+        $r = new Reservation();
 
-    return $result;
+        if($r->updateReservation($id_reso, $start_date,$end_date)){
+            echo 'Update worked';
+        }else{
+            echo 'An Error occurred while updating. Please try again';
+        }
 
-}else {
-    echo 'Nothing';
-}*/
+        $r->unSetConnection();
+
+        break;
+
+    case 'addNewReservation':
+        $id_u = $_SESSION['userId'];
+        $id_reso = $_POST['id_reso'];
+        $start_date = $_POST['start_date'];
+        $end_date = $_POST['end_date'];
+
+        $r = new Reservation();
+
+        if($r->newReservation($id_u, $id_reso,$start_date, $end_date)){
+            echo 'Successfully reserved';
+        }else{
+            echo 'An Error occurred while adding. Please try again';
+        }
+
+        break;
+    default:
+        echo 'Error occurred';
+        break;
+}

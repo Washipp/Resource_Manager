@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="view/css/normalize.css">
 <link rel="stylesheet" href="view/css/skeleton.css">
 <link rel='stylesheet' href='view/css/fullcalendar.css' />
+<link rel='stylesheet' href='view/css/jquery-ui.css' />
 
 <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -28,6 +29,7 @@
 <script src='view/js/jquery.min.js'></script>
 <script src='view/js/moment.min.js'></script>
 <script src='view/js/fullcalendar.js'></script>
+<script src='view/js/jquery-ui.js'></script>
 <!--//TODO optimize performance inside builder-->
 <script src="view/js/script.js"></script>
 <script src="view/js/user.ajax.js"></script>
