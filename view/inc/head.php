@@ -17,6 +17,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <link rel="stylesheet" href="view/css/normalize.css">
 <link rel="stylesheet" href="view/css/skeleton.css">
+<link rel='stylesheet' href='view/css/fullcalendar.css' />
 
 <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -24,10 +25,12 @@
 
 <!-- JavaScript
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src='view/js/jquery.min.js'></script>
+<script src='view/js/moment.min.js'></script>
+<script src='view/js/fullcalendar.js'></script>
 <!--//TODO optimize performance inside builder-->
 <script src="view/js/script.js"></script>
 <script src="view/js/user.ajax.js"></script>
-<script src="view/js/resource.ajax.js"></script>
+<script src="view/js/newResource.ajax.js"></script>
 <script src="view/js/account.ajax.js"></script>
-
+<script src="view/js/reservation.ajax.js"></script>

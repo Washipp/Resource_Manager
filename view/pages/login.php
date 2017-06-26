@@ -8,7 +8,7 @@
         </div>
         <div class="six columns">
             <label for="passwordLogin">Password: </label>
-            <input class="u-full-width" type="password" name="passwordLogin" id="passwordLogin" required>
+            <input class="u-full-width" type="password" name="passwordLogin" id="passwordLogin" placeholder="Password" required>
         </div>
         <button type="button" name="login" id="login" onclick="sendLoginInputs()">Login</button>
     </form>
@@ -27,11 +27,11 @@
         </div>
         <div class="three columns">
             <label for="passwordRegister">Password: </label>
-            <input class="u-full-width" type="password" name="passwordRegister" id="passwordRegister" placeholder="your Password" required>
+            <input class="u-full-width" type="password" name="passwordRegister" id="passwordRegister" placeholder="Password" required>
         </div>
         <div class="three columns">
             <label for="passwordRepeat"> Repeat Password: </label>
-            <input class="u-full-width" type="password" name="passwordRepeat" id="passwordRepeat" required>
+            <input class="u-full-width" type="password" name="passwordRepeat" id="passwordRepeat" placeholder="Password Repeat" required>
         </div>
         <button type="button" id="register" onclick="sendRegisterInputs()">Register</button>
     </form>

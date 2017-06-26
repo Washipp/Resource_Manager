@@ -10,3 +10,6 @@ foreach($array as $key=>$val){
     }
     echo '<br />';
 }
+?>
+<div id="test"></div>
+<div id='calendar'></div>
