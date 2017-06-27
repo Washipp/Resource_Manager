@@ -13,6 +13,7 @@
         <button type="button" name="login" id="login" onclick="sendLoginInputs()">Login</button>
     </form>
 </div>
+<!--TODO add info div for Login-->
 <hr />
 <h2>Register</h2>
 <div class="row">

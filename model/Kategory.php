@@ -15,8 +15,12 @@ class Kategory extends Connection
     function addNewKategory( $title, $description){
         $stmt = $this->getConnection()->prepare( "INSERT INTO kategory (description, title) VALUES (?,?);");
         $stmt->bind_param( 'ss', $description, $title);
-        $stmt->execute();
-        $stmt->close();
-        $this->getConnection()->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 }

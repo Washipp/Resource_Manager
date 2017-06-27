@@ -14,6 +14,8 @@ function sendResourceInputs(){
             'description' : description,
         },
         success : function( response ) {
+            $('#title').val('');
+            $('#description').val('');
             $('#info').text(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {

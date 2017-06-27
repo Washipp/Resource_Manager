@@ -7,7 +7,7 @@
  */
 session_start();
 require_once '../model/User.php';
-
+//TODO Check if values are set
 $type = $_POST['type'];
 $email = $_POST['email'];
 $password = $_POST['password'];

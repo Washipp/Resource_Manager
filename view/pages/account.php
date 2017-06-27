@@ -2,14 +2,12 @@
 require_once 'model/User.php';
 
 $user = new User();
-
+//TODO ajax --> use controller
 $array = $user->showInformationById($_SESSION['userId']);
-
 
 $name = $array['name'];
 $email = $array['email'];
 $created = $array['created'];
-
 
 ?>
 <div class="row">
@@ -39,7 +37,7 @@ $created = $array['created'];
 <div class="row" id="changeNameForm" style="display: none">
     <form method="post">
         <div class="twelve columns"
-            <label for="passwordRegister">New Name: </label>
+            <label for="newName">New Name: </label>
             <input class="u-full-width" type="text" name="newName" id="newName" required>
         </div>
         <input type="hidden" id="typeName" name="typeName" value="changeName">
@@ -47,4 +45,12 @@ $created = $array['created'];
     </form>
 </div>
 
-<div class="info" id="info"></div>
+<div class="ui-widget">
+    <div class="ui-corner-all" id="infoBox" style="padding: 0 .7em; display: none">
+        <p>
+            <span class="ui-icon ui-icon-alert"
+                  style="float: left; margin-right: .3em;"></span>
+            <strong>Alert:</strong><div id="info"></div>
+        </p>
+    </div>
+</div>

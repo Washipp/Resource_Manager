@@ -24,10 +24,14 @@ function sendInformationPassword(){
             'passwordRepeat' : passwordRepeat
         },
         success : function( response ) {
-            $('#info').text(response);
+            $('#infoBox').show();
+            $('#infoBox').addClass('ui-state-highlight');
+            $('#info').append(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {
-            $('#info').text('An error occurred while trying to change the password. Please try again.');
+            $('#infoBox').show();
+            $('#infoBox').addClass('ui-state-error');
+            $('#info').append('An error occurred while trying to change the password. Please try again.');
         }
     });
 }
@@ -44,10 +48,14 @@ function sendInformationName(){
             'name' : name
         },
         success : function( response ) {
-            $('#info').text(response);
+            $('#infoBox').show();
+            $('#infoBox').addClass('ui-state-highlight');
+            $('#info').append(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {
-            $('#info').text('An error occurred while trying to change the name. Please try again.');
+            $('#infoBox').show();
+            $('#infoBox').addClass('ui-state-error');
+            $('#info').append('An error occurred while trying to change the name. Please try again.');
         }
     });
 }

@@ -31,7 +31,8 @@ class Reservation extends Connection
     function getReservationById($id){
         $array = [];
         $stmt = $this->getConnection()->prepare( "
-          SELECT id_reso, title, start_date, end_date, description FROM reservation LEFT JOIN resource ON reservation.id_reso = resource.reso_id WHERE rese_id = ?;");
+          SELECT rese_id, title, start_date, end_date, description FROM reservation LEFT JOIN resource ON reservation.id_reso = resource.reso_id WHERE rese_id = ?;
+          ");
         $stmt->bind_param('i', $id );
         $stmt->execute();
         $stmt->bind_result($id, $title, $start, $end, $description);
@@ -50,11 +51,32 @@ class Reservation extends Connection
         return $array;
     }
 
-    function updateReservation($id_reso, $start_date, $end_date){
+    function getAllReservation(){
+        $array = [];
         $stmt = $this->getConnection()->prepare("
-        UPDATE reservation SET start_date = ?,end_date = ? WHERE id_reso = ?;
+        SELECT rese_id, title, start_date, end_date, description FROM reservation LEFT JOIN resource ON reservation.id_reso = resource.reso_id;
         ");
-        $stmt->bind_param('ssi',$start_date, $end_date, $id_reso);
+        $stmt->execute();
+        $stmt->bind_result($id, $title, $start, $end, $description);
+        while($stmt->fetch()){
+            $result = [
+                'id' => $id,
+                'title' => $title,
+                'start' => $start,
+                'end' => $end,
+                'description' => $description
+            ];
+            $array[] = $result;
+        }
+
+        return $array;
+    }
+
+    function updateReservation($id_rese, $start_date, $end_date){
+        $stmt = $this->getConnection()->prepare("
+        UPDATE reservation SET start_date = ?,end_date = ? WHERE rese_id = ?;
+        ");
+        $stmt->bind_param('ssi',$start_date, $end_date, $id_rese);
         if($stmt->execute()){
             $stmt->close();
             return true;

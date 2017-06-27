@@ -14,6 +14,7 @@ $type = $_POST['type'];
 
 switch ($type){
     case 'changeName':
+        //TODO check if name isset
         $name = $_POST['name'];
 
         $u = new User();
@@ -27,7 +28,7 @@ switch ($type){
         break;
 
     case 'changeEmail':
-
+        //TODO email change function
         break;
 
     case 'changePassword':

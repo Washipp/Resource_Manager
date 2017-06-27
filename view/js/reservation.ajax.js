@@ -26,7 +26,7 @@ $(document).ready(function() {
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'agendaWeek,agendaDay,listDay'
         },
         defaultDate: '2017-06-27',
         defaultView: 'agendaDay',
@@ -39,7 +39,9 @@ $(document).ready(function() {
                 'type' : 'getReservations'
             },
             error: function() {
-                alert('there was an error while fetching events!');
+                $('#infoBox').show();
+                $('#infoBox').addClass('ui-state-error');
+                $('#info').append('Please Login to add a Reservation');
             }
         },
         eventResize: function(event, delta, revertFunc) {
@@ -55,10 +57,6 @@ $(document).ready(function() {
             var endDate = new Date(event.start.toISOString());
             endDate.setHours(endDate.getHours()+2);
             addNewReservation(event.id, event.start.toISOString(), endDate.toISOString());
-            /*alert(event.start.toISOString());
-            var date = new Date(event.start.toISOString());
-            date.setHours(date.getHours()+2);
-            alert(date.toISOString());*/
         }
 
     });
@@ -73,15 +71,15 @@ function updateEvent(id, start, end, revertFunc){
         method  : 'post',
         data    : {
             'type' : 'updateReservation',
-            'id_reso' : id,
+            'id_rese' : id,
             'start_date' : start,
             'end_date' : end
         },
         success : function( result ){
-
+            //TODO send result to user
         },
         error: function( error ){
-            alert(error);
+            $('#info').append(error);
             revertFunc();
         }
     });
@@ -98,10 +96,10 @@ function addNewReservation(id, start, end){
             'end_date' : end
         },
         success : function( result ){
-            alert(result);
+            $('#info').append(result);
         },
         error: function( error ){
-            alert(error);
+            $('#info').append(error);
         }
     });
 }

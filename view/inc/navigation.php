@@ -1,8 +1,8 @@
 <hr>
 <a href="home">Home</a>
 <a href="account">Account</a>
-<a href="resources">Ressourcen</a>
-<a href="addresource">Add Ressource</a>
+<a href="resources">Resources</a>
+<a href="addresource">Add Resource</a>
 <?php
 if(isset($_SESSION['userId'])){
     echo'

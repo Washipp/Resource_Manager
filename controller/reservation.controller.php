@@ -8,70 +8,56 @@
 session_start();
 require_once '../model/Reservation.php';
 
-$json_array = array(
+if(!isset($_SESSION['userId'])){
+    echo 'Please login first';
+}else {
 
-    array(
-        'title' => 'event1',
-        'start' => date_format(new DateTime('2017-06-09'), 'c'),
-        'end' => date_format(new DateTime('2017-06-10'), 'c')
-    ),
+    $type = $_POST['type'];
+    //TODO Delete Reservation
+    switch ($type) {
+        case 'getReservations':
+            $r = new Reservation();
 
-    //2nd record
-    array(
-        'title' => 'event2',
-        'start' => date_format(new DateTime('2017-06-12'), 'c'),
-        'end' => date_format(new DateTime('2017-06-13'), 'c')
-    )
+            $result = $r->getAllReservation();
 
-);
+            echo json_encode($result);
 
-//echo json_encode($json_array);
+            $r->unSetConnection();
+            break;
+        case 'updateReservation':
+            $id_rese = $_POST['id_rese'];
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
 
-$type = $_POST['type'];
+            $r = new Reservation();
 
-switch ($type){
-    case 'getReservations':
-        $r = new Reservation();
+            if ($r->updateReservation($id_rese, $start_date, $end_date)) {
+                echo 'Update worked';
+            } else {
+                echo 'An Error occurred while updating. Please try again';
+            }
 
-        $result  = $r->getReservationById(1);
+            $r->unSetConnection();
 
-        $r->unSetConnection();
+            break;
 
-        echo json_encode($result);
-        break;
-    case 'updateReservation':
-        $id_reso = $_POST['id_reso'];
-        $start_date = $_POST['start_date'];
-        $end_date = $_POST['end_date'];
+        case 'addNewReservation':
+            $id_u = $_SESSION['userId'];
+            $id_reso = $_POST['id_reso'];
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
 
-        $r = new Reservation();
+            $r = new Reservation();
 
-        if($r->updateReservation($id_reso, $start_date,$end_date)){
-            echo 'Update worked';
-        }else{
-            echo 'An Error occurred while updating. Please try again';
-        }
+            if ($r->newReservation($id_u, $id_reso, $start_date, $end_date)) {
+                echo 'Successfully reserved';
+            } else {
+                echo 'An Error occurred while adding. Please try again';
+            }
 
-        $r->unSetConnection();
-
-        break;
-
-    case 'addNewReservation':
-        $id_u = $_SESSION['userId'];
-        $id_reso = $_POST['id_reso'];
-        $start_date = $_POST['start_date'];
-        $end_date = $_POST['end_date'];
-
-        $r = new Reservation();
-
-        if($r->newReservation($id_u, $id_reso,$start_date, $end_date)){
-            echo 'Successfully reserved';
-        }else{
-            echo 'An Error occurred while adding. Please try again';
-        }
-
-        break;
-    default:
-        echo 'Error occurred';
-        break;
+            break;
+        default:
+            echo 'Error occurred';
+            break;
+    }
 }

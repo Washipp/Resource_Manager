@@ -16,6 +16,7 @@ function sendLoginInputs(){
                 'password' : password
             },
             success : function( response ) {
+                //TODO remove value of input fields
                 $('#info').text(response);
             },
             error : function () {
@@ -42,6 +43,7 @@ function sendRegisterInputs(){
             'passwordRepeat' : passwordRepeat
         },
         success : function( response ) {
+            //TODO remove value of input fields
             $('#info').text(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {

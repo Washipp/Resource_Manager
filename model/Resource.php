@@ -6,7 +6,7 @@
  * Date: 15.05.2017
  * Time: 20:35
  */
-require 'Connection.php';
+require_once 'Connection.php';
 
 class Resource extends Connection
 {
@@ -20,8 +20,13 @@ class Resource extends Connection
          (title, description, activated)
           VALUES (?,?,?);");
         $stmt->bind_param('ssi', $name, $description, $activated);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
     }
 
     function showInfosById($id){
@@ -47,8 +52,13 @@ class Resource extends Connection
         $stmt = $this->getConnection()->prepare( "
           UPDATE resource SET activated = 0 WHERE reso_id = ?");
         $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
 
     }
 
@@ -56,8 +66,13 @@ class Resource extends Connection
         $stmt = $this->getConnection()->prepare("
           UPDATE resource SET description = ? WHERE reso_id = ?");
         $stmt->bind_param('si', $newDescription, $id);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
 
     }
 
@@ -65,8 +80,13 @@ class Resource extends Connection
         $stmt = $this->getConnection()->prepare("
           UPDATE resource SET title = ? WHERE reso_id = ?");
         $stmt->bind_param('si', $newName, $id);
-        $stmt->execute();
-        $stmt->close();
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            $stmt->close();
+            return false;
+        }
 
     }
 
