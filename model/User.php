@@ -10,7 +10,8 @@ require_once 'Connection.php';
 
 class User extends Connection
 {
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
     }
 
@@ -31,7 +32,7 @@ class User extends Connection
     }
 
     function showInformationById($id){
-        $result =[];
+        $result = [];
         $stmt = $this->getConnection()->prepare("
             SELECT name, email, created FROM user WHERE u_id = ?;
         ");

@@ -32,9 +32,9 @@ if(!isset($_SESSION['userId'])){
             $r = new Reservation();
 
             if ($r->updateReservation($id_rese, $start_date, $end_date)) {
-                echo 'Update worked';
+                echo 'Successfully updated!';
             } else {
-                echo 'An Error occurred while updating. Please try again';
+                echo 'An Error occurred while updating. Please try again!';
             }
 
             $r->unSetConnection();
@@ -50,9 +50,22 @@ if(!isset($_SESSION['userId'])){
             $r = new Reservation();
 
             if ($r->newReservation($id_u, $id_reso, $start_date, $end_date)) {
-                echo 'Successfully reserved';
+                echo 'Successfully reserved!';
             } else {
-                echo 'An Error occurred while adding. Please try again';
+                echo 'An Error occurred while adding. Please try again!';
+            }
+
+            break;
+
+        case 'deleteReservation':
+            $id_rese = $_POST['id_rese'];
+
+            $r = new Reservation();
+
+            if($r->deleteReservationById($id_rese)){
+                echo 'Successfully deleted!';
+            }else{
+                echo 'An Error occurred while deleting. Please try again!';
             }
 
             break;

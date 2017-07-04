@@ -6,6 +6,7 @@
  * Date: 15.05.2017
  * Time: 20:35
  */
+
 require_once 'Connection.php';
 
 class Resource extends Connection

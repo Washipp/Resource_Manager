@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="view/css/skeleton.css">
 <link rel='stylesheet' href='view/css/fullcalendar.css' />
 <link rel='stylesheet' href='view/css/jquery-ui.css' />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- Favicon
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -33,6 +34,6 @@
 <!--//TODO optimize performance inside builder-->
 <script src="view/js/script.js"></script>
 <script src="view/js/user.ajax.js"></script>
-<script src="view/js/newResource.ajax.js"></script>
+<script src="view/js/resource.ajax.js"></script>
 <script src="view/js/account.ajax.js"></script>
 <script src="view/js/reservation.ajax.js"></script>

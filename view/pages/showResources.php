@@ -12,10 +12,9 @@ foreach($array as $key=>$val){
 ?>
 </div>
 <div class="ui-widget">
-    <div class="ui-corner-all" id="infoBox" style="padding: 0 .7em; display: none">
+    <div class="ui-corner-all" id="infoBox" style="padding: 0 .7em">
         <p>
-            <span class="ui-icon ui-icon-alert"
-                  style="float: left; margin-right: .3em;"></span>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <strong>Alert:</strong><div id="info"></div>
         </p>
     </div>

@@ -6,18 +6,20 @@
  * Time: 13:17
  */
 session_start();
+
 require_once '../model/User.php';
+
 //TODO Check if values are set
 $type = $_POST['type'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-switch ($type){
+switch ($type) {
     case 'login':
         $r = new User();
         $passwordFromDatabase = $r->findPasswordByEmail($email);
 
-        if(password_needs_rehash($passwordFromDatabase, PASSWORD_BCRYPT, ["cost" => 12]) && hash("sha512", $password) === $passwordFromDatabase){
+            if(password_needs_rehash($passwordFromDatabase, PASSWORD_BCRYPT, ["cost" => 12]) && hash("sha512", $password) === $passwordFromDatabase){
             $newPasswordHash = password_hash($password, PASSWORD_BCRYPT, ["cost" => 12]);
             $r->setPasswordByEmail($email, $newPasswordHash);
 
@@ -55,5 +57,6 @@ switch ($type){
             $r->unSetConnection();
         }
         break;
+
 }
 

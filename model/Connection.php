@@ -22,7 +22,7 @@ abstract class Connection
         $dbName = "13528_res_man";
         $port = "8889";
 
-        $conn =  new mysqli($serverName, $userName, $password, $dbName ,$port);
+        $conn =  new mysqli($serverName, $userName, $password, $dbName, $port );
         if (mysqli_connect_errno()) {
             printf("Connection Error: %s\n", mysqli_connect_error());
             exit();

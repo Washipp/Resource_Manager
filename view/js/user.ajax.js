@@ -47,7 +47,7 @@ function sendRegisterInputs(){
             $('#info').text(response);
         },
         error : function ( xhr, ajaxOptions, thrownError ) {
-            $('#info').text('An error occurred while trying to register. Please try again.');
+            $('#info').text('Register Failed. Please try again.');
         }
     });
 }
